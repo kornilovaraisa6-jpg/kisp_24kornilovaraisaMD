@@ -1,41 +1,33 @@
-import { Tabs } from 'expo-router';
-
-import Ionicons from '@expo/vector-icons/Ionicons';
-
+import { NativeTabs } from 'expo-router/native-tabs';
 
 export default function TabLayout() {
   return (
-<Tabs
-  screenOptions={{
-    tabBarActiveTintColor: '#ffd33d',
-    headerStyle: {
-      backgroundColor: '#25292e',
-    },
-    headerShadowVisible: false,
-    headerTintColor: '#fff',
-    tabBarStyle: {
-      backgroundColor: '#25292e',
-    },
-  }}
->
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="about"
-        options={{
-          title: 'About',
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
-          ),
-        }}
-      />
-    </Tabs>
+    <NativeTabs
+      tintColor="#ffd33d"
+    >
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          sf={{ default: 'house', selected: 'house.fill' }}
+          md="home"
+        />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="about">
+        <NativeTabs.Trigger.Label>About</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          sf={{ default: 'info.circle', selected: 'info.circle.fill' }}
+          md="info"
+        />
+      </NativeTabs.Trigger>
+
+            <NativeTabs.Trigger name="clock">
+        <NativeTabs.Trigger.Label>Clock</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          sf={{ default: 'clock', selected: 'info.circle.fill' }}
+          md="schedule"
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
